@@ -242,7 +242,7 @@ my $conn = shift;
    $sockaddr = 'S n a4 x8';
    ($name, $aliases, $proto) = getprotobyname('tcp');
    ($host,$port) = split(/:/, $host);
-   $port = 143 unless $port;
+   $port = 993 unless $port;
 
    if ($host eq "") {
 	Log ("no remote host defined");

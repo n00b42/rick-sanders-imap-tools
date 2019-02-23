@@ -214,7 +214,7 @@ my $conn = shift;
    Log("Connecting to $host") if $debug;
    
    ($host,$port) = split(/:/, $host);
-   $port = 143 unless $port;
+   $port = 993 unless $port;
 
    # We know whether to use SSL for ports 143 and 993.  For any
    # other ones we'll have to figure it out.

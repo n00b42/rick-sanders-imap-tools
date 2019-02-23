@@ -181,7 +181,7 @@ my $field;
          my $remuser = $2;
          my $rempwd  = $3;
          ($remhost,$remport) = split(/:/, $remhost);
-         $remport = 143 unless $remport;
+         $remport = 993 unless $remport;
          $$remhosts{"$remhost"} = { port=>$remport, user=>$remuser, pwd=>$rempwd };
       } elsif ( !/(.+)\t(.+)\t(.+)\t(.+)/ ) {
          Log("Line $line in rules file is not in tab-delimited format");
@@ -331,7 +331,7 @@ my $conn = shift;
    Log("Connecting to $host") if $debug;
    
    ($host,$port) = split(/:/, $host);
-   $port = 143 unless $port;
+   $port = 993 unless $port;
 
    Log("Connecting to host $host port $port");
 

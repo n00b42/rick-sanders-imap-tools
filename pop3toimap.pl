@@ -51,8 +51,8 @@ use MIME::Base64 qw( encode_base64 decode_base64 );
    }
    ($imapHost,$imapPort) = split(/:/, $imapHost);
    ($popHost,$popPort)  = split(/:/, $popHost);
-   $imapPort = 143 unless $imapPort;
-   $popPort  = 110 unless $popPort;
+   $imapPort = 993 unless $imapPort;
+   $popPort  = 995 unless $popPort;
 
    foreach $line ( @users ) {
       $line =~ s/\s+/ /g;

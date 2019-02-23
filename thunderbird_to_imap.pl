@@ -215,7 +215,7 @@ my $conn = shift;
 
    ($host,$port) = split(/:/, $host);
 
-   $port = 143 unless $port;
+   $port = 993 unless $port;
 
    # We know whether to use SSL for the well-known ports (143,993,110,995) but
    #  for any others we'll have to figure it out.
