@@ -320,11 +320,6 @@ my %DUMPED;
 
              $msgfile = unique( $msgfile, "$dir/$user/$mbx" );
 
-             if ( $update ) {
-                #  Make sure filename is unique
-                $msgfile = unique( $msgfile, "$dir/$user/$mbx" );
-             }
-
              if ( $include_all_flags ) {
                 summarize_flags( \$flags);
                 $msgfile .= ",$flags" if $flags;
