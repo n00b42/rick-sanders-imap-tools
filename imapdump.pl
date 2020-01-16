@@ -311,7 +311,12 @@ my %DUMPED;
              mkpath( "$dir/$user/$mbx" ) if !-d "$dir/$user/$mbx";
 
              if ( $use_header_field_for_filename ) {
-                $msgfile = get_header_field( $use_header_field_for_filename, \$message );
+                @myheaders = split(/,/, $use_header_field_for_filename);
+                $msgfile = ""; $firstheader = 1;
+                foreach $myheader ( @myheaders ) {
+                   $msgfile .= " - " if ! $firstheader; $firstheader = 0;
+                   $msgfile .= get_header_field( $myheader, \$message );
+                }
                 $msgfile = $msgnum if !$msgfile;
              } else {
                 $msgfile = $msgnum;
@@ -1338,7 +1343,7 @@ sub usage {
    print STDOUT "          [-u] Don't dump messages already dumped\n";
    print STDOUT "          [-D <dbm directory] Directory to put dbm file, used with -u argument\n";
    print STDOUT "          [-U] Don't dump message if it already exists in the dump directory\n";
-   print STDOUT "          [-X <header field>]  Dump filename based on the selected header field, eg Subject\n";
+   print STDOUT "          [-X <header field[s]>]  Dump filename based on the selected header field(s), eg Subject, or Date,Subject\n";
    print STDOUT "          [-Y] set the date on the dump files based on the Date: field in the header\n";
    print STDOUT "          [-Z <IMAP SEARCH filter>]  Select msgs based on an IMAP search filter\n";
    print STDOUT "          [-N] Don't worry about making dump msgfilenames unique, just write them\n";
